@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMAGE = "https://cdn.poehali.dev/projects/84b70900-4a28-4564-af81-e069d7135e03/files/e1996ee1-7c0d-4bf8-922c-9a4ff67aa661.jpg";
+const HERO_IMAGE = "https://cdn.poehali.dev/projects/84b70900-4a28-4564-af81-e069d7135e03/files/518fa3de-46e8-4e17-a935-57e087fd8c8b.jpg";
 
 const NAV_LINKS = [
-  { id: "about", label: "О отряде" },
+  { id: "about", label: "О нас" },
   { id: "help", label: "Как помочь" },
   { id: "stories", label: "Истории" },
   { id: "volunteers", label: "Волонтёры" },
@@ -13,85 +13,85 @@ const NAV_LINKS = [
 ];
 
 const STATS = [
-  { value: "1 200+", label: "людей получили помощь" },
-  { value: "5", label: "лет работы" },
-  { value: "47", label: "волонтёров" },
-  { value: "312", label: "выездов по городу" },
+  { value: "640+", label: "животных спасено" },
+  { value: "4", label: "года работы" },
+  { value: "38", label: "волонтёров" },
+  { value: "200+", label: "пристроено в семьи" },
 ];
 
 const HOW_TO_HELP = [
   {
     icon: "Heart",
     title: "Стать волонтёром",
-    desc: "Присоединитесь к нам — заполните анкету и выходите с нами на раздачи еды, тёплой одежды и предметов первой необходимости.",
+    desc: "Помогайте кормить животных, вывозить их к ветеринару, искать хозяев — любая помощь бесценна.",
   },
   {
     icon: "HandCoins",
     title: "Пожертвовать",
-    desc: "Даже небольшая сумма позволяет купить горячую еду, термобельё или медикаменты для человека, которому некуда идти.",
+    desc: "Деньги идут на корм, лечение, стерилизацию и содержание животных. Даже 100 рублей — это миска еды.",
   },
   {
-    icon: "Shirt",
-    title: "Передать вещи",
-    desc: "Тёплая одежда, одеяла, обувь, средства гигиены — всё это принимаем в пунктах сбора по всей Кинешме.",
+    icon: "Home",
+    title: "Взять питомца",
+    desc: "Дайте бездомному животному дом и любовь. У нас всегда есть кошки и собаки, ищущие семью.",
   },
   {
-    icon: "Share2",
-    title: "Рассказать друзьям",
-    desc: "Расскажите о нас — чем больше людей знает об отряде, тем больше помощи мы можем оказать тем, кто в ней нуждается.",
+    icon: "Package",
+    title: "Передать необходимое",
+    desc: "Корм, лежанки, миски, поводки, переноски — принимаем в любом состоянии. Всё пойдёт в дело.",
   },
 ];
 
 const STORIES = [
   {
-    name: "Николай, 58 лет",
-    place: "г. Кинешма",
-    text: "Три зимы провёл на улице. Ребята из «Рук добра» не просто накормили — помогли восстановить документы и найти временное жильё.",
-    icon: "🏠",
+    name: "Шарик",
+    place: "г. Кинешма, ул. Советская",
+    text: "Пёс три года жил у мусорных баков. Волонтёры отряда поймали его, вылечили сломанную лапу и нашли любящую семью. Теперь он живёт на диване.",
+    icon: "🐕",
     color: "bg-orange-50",
   },
   {
-    name: "Татьяна, 43 года",
-    place: "г. Кинешма",
-    text: "Оказалась на улице после пожара. Волонтёры привезли одежду, еду, а потом помогли связаться с социальной службой.",
-    icon: "🔥",
+    name: "Мурка и котята",
+    place: "г. Кинешма, рынок",
+    text: "Кошка с пятью котятами жила под рыночными лотками. Всех забрали, вакцинировали, стерилизовали маму и пристроили всех котят в добрые руки.",
+    icon: "🐱",
     color: "bg-amber-50",
   },
   {
-    name: "Александр, 65 лет",
-    place: "г. Кинешма",
-    text: "Пожилой мужчина без родственников. Каждую неделю ребята привозят ему еду и лекарства — он говорит, что это единственные люди, которые о нём помнят.",
-    icon: "💛",
+    name: "Рекс",
+    place: "г. Кинешма, заброшенный завод",
+    text: "Охранная собака, которую бросили хозяева при закрытии завода. Жил там год. Сейчас Рекс — ласковый домашний пёс в семье из Кинешмы.",
+    icon: "🦮",
     color: "bg-yellow-50",
   },
 ];
 
 const VOLUNTEERS_LIST = [
-  { name: "Ольга Смирнова", role: "Руководитель отряда", years: "5 лет", icon: "👩‍💼" },
-  { name: "Андрей Захаров", role: "Координатор выездов", years: "4 года", icon: "🚗" },
-  { name: "Елена Фёдорова", role: "Медицинская помощь", years: "3 года", icon: "👩‍⚕️" },
-  { name: "Сергей Платонов", role: "Сбор вещей и продуктов", years: "5 лет", icon: "📦" },
-  { name: "Наталья Козлова", role: "Соцсети и реклама", years: "2 года", icon: "📱" },
-  { name: "Виктор Морозов", role: "Связь с соцслужбами", years: "4 года", icon: "🤝" },
+  { name: "Марина Власова", role: "Руководитель отряда", years: "4 года", icon: "👩‍💼" },
+  { name: "Алексей Громов", role: "Отлов и транспорт", years: "3 года", icon: "🚐" },
+  { name: "Ирина Соболева", role: "Ветеринарная связь", years: "4 года", icon: "👩‍⚕️" },
+  { name: "Павел Никитин", role: "Фото и соцсети", years: "2 года", icon: "📷" },
+  { name: "Екатерина Зуева", role: "Пристройство животных", years: "3 года", icon: "🏠" },
+  { name: "Дмитрий Сёмин", role: "Сбор корма и вещей", years: "2 года", icon: "📦" },
 ];
 
 const BLOG_POSTS = [
   {
-    date: "1 апреля 2026",
-    title: "Весенняя раздача: 200 порций горячего супа за один вечер",
-    excerpt: "В начале апреля мы провели большой выезд на набережную. Рассказываем, как это было и чем вы можете помочь.",
+    date: "3 апреля 2026",
+    title: "Апрельский рейд: накормили 47 животных за один вечер",
+    excerpt: "Вышли большой командой — объехали все известные точки скопления бездомных животных в Кинешме. Рассказываем, как прошло.",
     tag: "Репортаж",
   },
   {
-    date: "15 марта 2026",
-    title: "Как мы собрали 150 пакетов с вещами за неделю",
-    excerpt: "После одного поста в соцсетях жители Кинешмы откликнулись так, что не хватило машин для вывоза. Спасибо вам!",
+    date: "20 марта 2026",
+    title: "За месяц пристроили 12 кошек и 5 собак — рекорд отряда!",
+    excerpt: "Март стал самым успешным месяцем для пристройства. Делимся, что сработало и как вы можете помочь.",
     tag: "Итоги",
   },
   {
-    date: "2 марта 2026",
-    title: "Зима позади: итоги самого трудного сезона",
-    excerpt: "Зима — самое опасное время для людей без крова. Рассказываем, сколько человек мы поддержали этой зимой.",
+    date: "5 марта 2026",
+    title: "Зима позади: как животные пережили холода",
+    excerpt: "Зима — самое опасное время для бездомных животных. Рассказываем, сколько питомцев мы поддержали и спасли этой зимой.",
     tag: "Отчёт",
   },
 ];
@@ -124,9 +124,9 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <button
             onClick={() => scrollTo("hero")}
-            className="font-display text-xl md:text-2xl font-bold text-terracotta tracking-tight flex items-center gap-2"
+            className="font-display text-xl md:text-2xl font-bold text-terracotta tracking-tight"
           >
-            🤲 Руки добра
+            🐾 Руки добра
           </button>
 
           <div className="hidden md:flex items-center gap-6">
@@ -185,18 +185,18 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${HERO_IMAGE})` }}
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(70,25,10,0.78) 0%, rgba(15,8,3,0.40) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(70,25,10,0.75) 0%, rgba(15,8,3,0.38) 100%)" }} />
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto animate-fade-in">
           <div className="inline-block bg-white/15 backdrop-blur-sm text-white text-sm font-body font-medium px-4 py-1.5 rounded-full mb-6 border border-white/25">
-            Общественный отряд помощи бездомным · г. Кинешма
+            Волонтёрский отряд помощи бездомным животным · г. Кинешма
           </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
             Руки добра —<br />
-            <span style={{ color: "hsl(38,90%,72%)" }}>тепло для каждого</span>
+            <span style={{ color: "hsl(38,90%,72%)" }}>для тех, кто не может<br />попросить о помощи</span>
           </h1>
           <p className="font-body text-lg md:text-xl text-white/85 mb-10 max-w-xl mx-auto leading-relaxed">
-            Мы верим: каждый человек достоин заботы и уважения. Выходим на улицы Кинешмы, чтобы никто не остался один на один с бедой.
+            Они не умеют говорить, но мы слышим их. Каждый день выходим на улицы Кинешмы, чтобы бездомные животные получили еду, лечение и дом.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -239,16 +239,16 @@ const Index = () => {
             <div>
               <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">О нас</div>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-                Мы — соседи.<br />Мы — горожане.<br />Мы — рядом.
+                Мы — голос тех,<br />кто не может<br />говорить
               </h2>
               <p className="font-body text-foreground/70 text-lg leading-relaxed mb-6">
-                «Руки добра» — общественный волонтёрский отряд города Кинешмы Ивановской области. Мы основаны в 2021 году обычными жителями города, которые не могли пройти мимо.
+                «Руки добра» — волонтёрский отряд города Кинешмы. Мы основаны в 2022 году жителями города, которые не смогли пройти мимо брошенных и голодных животных.
               </p>
               <p className="font-body text-foreground/70 text-lg leading-relaxed mb-8">
-                Каждую неделю мы выходим на улицы с горячей едой, тёплой одеждой и простым человеческим участием. Помогаем не только едой — помогаем восстановить документы, связаться с социальными службами, найти ночлег.
+                Кормим, лечим, стерилизуем и пристраиваем бездомных кошек и собак. Работаем полностью на добровольной основе — только любовь к животным и желание помочь.
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Горячее питание", "Одежда и обувь", "Медпомощь", "Документы", "Ночлег", "Психологическая поддержка"].map((tag) => (
+                {["Кормление", "Ветпомощь", "Стерилизация", "Пристройство", "Передержка", "Поиск хозяев"].map((tag) => (
                   <span key={tag} className="bg-terracotta-light text-terracotta font-body text-sm px-3 py-1.5 rounded-full">
                     {tag}
                   </span>
@@ -261,13 +261,13 @@ const Index = () => {
                 style={{ background: "linear-gradient(135deg, hsl(15,60%,88%) 0%, hsl(38,60%,88%) 100%)" }}
               >
                 <div className="text-center p-8">
-                  <div className="text-8xl mb-4">🤲</div>
-                  <p className="font-display text-2xl font-semibold text-terracotta">Протянуть руку</p>
-                  <p className="font-body text-foreground/60 mt-2 text-sm">— это всегда правильно</p>
+                  <div className="text-8xl mb-4">🐾</div>
+                  <p className="font-display text-2xl font-semibold text-terracotta">Каждая жизнь важна</p>
+                  <p className="font-body text-foreground/60 mt-2 text-sm">— даже самая маленькая</p>
                 </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-gold text-white font-body font-semibold px-6 py-3 rounded-xl warm-shadow text-sm">
-                г. Кинешма с 2021 года
+              <div className="absolute -bottom-4 -right-4 bg-gold text-white font-body font-semibold px-5 py-3 rounded-xl warm-shadow text-sm">
+                г. Кинешма с 2022 года
               </div>
             </div>
           </div>
@@ -282,10 +282,10 @@ const Index = () => {
           <div className="text-center mb-16">
             <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Как помочь</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Каждый вклад<br />меняет чью-то жизнь
+              Каждый может<br />изменить чью-то судьбу
             </h2>
             <p className="font-body text-foreground/60 text-lg mt-4 max-w-xl mx-auto">
-              Не нужно быть героем — нужно просто захотеть сделать добро
+              Не нужно быть зоологом — нужно просто любить животных
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -314,12 +314,12 @@ const Index = () => {
       <section id="stories" className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Истории</div>
+            <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Истории успеха</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Настоящие люди.<br />Настоящие перемены.
+              Они нашли<br />свой дом
             </h2>
             <p className="font-body text-foreground/55 text-lg mt-4 max-w-lg mx-auto">
-              Имена изменены, но каждая история — правда
+              Каждая история — это результат вашей поддержки
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -348,10 +348,10 @@ const Index = () => {
           <div className="text-center mb-16">
             <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Наша команда</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Обычные люди,<br />делающие необычное
+              Люди, которые<br />выбрали добро
             </h2>
             <p className="font-body text-foreground/60 text-lg mt-4">
-              Среди нас — врачи, учителя, студенты и пенсионеры
+              Среди нас — студенты, педагоги, врачи и просто неравнодушные кинешемцы
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -368,7 +368,7 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-10">
-            <p className="font-body text-foreground/60 mb-4">И ещё десятки неравнодушных кинешемцев</p>
+            <p className="font-body text-foreground/60 mb-4">И ещё десятки неравнодушных жителей Кинешмы</p>
             <button
               onClick={() => scrollTo("join")}
               className="border-2 border-terracotta text-terracotta font-body font-semibold px-8 py-3 rounded-xl hover:bg-terracotta hover:text-white transition-all"
@@ -387,7 +387,7 @@ const Index = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
               Новости и репортажи
             </h2>
-            <p className="font-body text-foreground/55 mt-4 text-lg">Следите за нашей работой</p>
+            <p className="font-body text-foreground/55 mt-4 text-lg">Следите за жизнью отряда</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {BLOG_POSTS.map((post) => (
@@ -396,7 +396,7 @@ const Index = () => {
                   className="h-40 flex items-center justify-center"
                   style={{ background: "linear-gradient(135deg, hsl(15,60%,88%) 0%, hsl(38,60%,88%) 100%)" }}
                 >
-                  <Icon name="BookOpen" size={48} className="text-terracotta opacity-50" />
+                  <span className="text-6xl opacity-60">🐾</span>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
@@ -419,17 +419,18 @@ const Index = () => {
       <section id="join" className="py-24 px-4 bg-terracotta">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
+            <div className="text-6xl mb-4">🐾</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
               Вступить в отряд
             </h2>
             <p className="font-body text-white/80 text-lg">
-              Заполните анкету — мы напишем вам в ближайшие дни и расскажем, как присоединиться
+              Заполните анкету — мы напишем вам в ближайшее время и расскажем, как присоединиться
             </p>
           </div>
 
           {submitted ? (
             <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-12 text-center border border-white/25">
-              <div className="text-7xl mb-6">🤲</div>
+              <div className="text-7xl mb-6">🐾</div>
               <h3 className="font-display text-3xl font-bold text-white mb-4">Заявка принята!</h3>
               <p className="font-body text-white/80 text-lg">
                 Спасибо, {formData.name}! Мы свяжемся с вами по номеру {formData.phone}. Добро пожаловать в «Руки добра»!
@@ -476,13 +477,13 @@ const Index = () => {
                 />
               </div>
               <div>
-                <label className="font-body text-sm text-white/80 mb-1.5 block">Почему хотите помогать?</label>
+                <label className="font-body text-sm text-white/80 mb-1.5 block">Чем хотите помочь?</label>
                 <textarea
                   name="motivation"
                   value={formData.motivation}
                   onChange={handleFormChange}
                   rows={4}
-                  placeholder="Расскажите немного о себе — чем хотите помочь, сколько времени готовы уделять..."
+                  placeholder="Расскажите о себе — как хотите помочь, есть ли опыт с животными, сколько времени готовы уделять..."
                   className="w-full bg-white/90 text-foreground font-body rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-white/50 placeholder:text-foreground/40 resize-none"
                 />
               </div>
@@ -510,7 +511,7 @@ const Index = () => {
             </h2>
             <p className="font-body text-foreground/55 text-lg mt-4">Мы в Кинешме — всегда на связи</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
             {[
               { icon: "Phone", title: "Телефон", value: "+7 (xxx) xxx-xx-xx", sub: "Ежедневно с 9:00 до 21:00" },
               { icon: "Mail", title: "Email", value: "rukidobra@mail.ru", sub: "Ответим в течение суток" },
@@ -527,17 +528,16 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Extra CTA */}
           <div
-            className="mt-12 rounded-2xl p-8 md:p-12 text-center"
+            className="rounded-2xl p-8 md:p-12 text-center"
             style={{ background: "linear-gradient(135deg, hsl(15,60%,88%) 0%, hsl(38,60%,88%) 100%)" }}
           >
-            <div className="text-5xl mb-4">💛</div>
+            <div className="text-5xl mb-4">🐶🐱</div>
             <h3 className="font-display text-3xl font-bold text-foreground mb-3">
-              Есть вещи или продукты для передачи?
+              Нашли бездомное животное?
             </h3>
             <p className="font-body text-foreground/70 text-lg mb-6 max-w-md mx-auto">
-              Напишите нам — мы организуем самовывоз или подскажем ближайший пункт сбора в вашем районе Кинешмы.
+              Позвоните нам или напишите в соцсети — подскажем, как помочь животному прямо сейчас, даже если нет возможности забрать его домой.
             </p>
             <button
               onClick={() => scrollTo("join")}
@@ -554,9 +554,9 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
             <div>
-              <div className="font-display text-2xl font-bold mb-2">🤲 Руки добра</div>
+              <div className="font-display text-2xl font-bold mb-2">🐾 Руки добра</div>
               <div className="font-body text-white/55 text-sm max-w-xs">
-                Общественный отряд помощи бездомным. г. Кинешма, Ивановская область. С 2021 года.
+                Волонтёрский отряд помощи бездомным животным. г. Кинешма, Ивановская область. С 2022 года.
               </div>
             </div>
             <div className="flex flex-wrap gap-5 justify-center">
@@ -573,7 +573,7 @@ const Index = () => {
           </div>
           <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
             <div className="font-body text-white/40 text-sm">© 2026 Отряд «Руки добра». Все права защищены.</div>
-            <div className="font-body text-white/40 text-sm">Некоммерческая общественная организация</div>
+            <div className="font-body text-white/40 text-sm">Некоммерческая общественная организация · г. Кинешма</div>
           </div>
         </div>
       </footer>
