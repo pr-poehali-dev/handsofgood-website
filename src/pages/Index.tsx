@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMAGE = "https://cdn.poehali.dev/projects/84b70900-4a28-4564-af81-e069d7135e03/files/a0b7a494-9aa2-4fab-abf4-07d13271bbae.jpg";
+const HERO_IMAGE = "https://cdn.poehali.dev/projects/84b70900-4a28-4564-af81-e069d7135e03/files/e1996ee1-7c0d-4bf8-922c-9a4ff67aa661.jpg";
 
 const NAV_LINKS = [
   { id: "about", label: "О отряде" },
@@ -13,86 +13,86 @@ const NAV_LINKS = [
 ];
 
 const STATS = [
-  { value: "847", label: "спасённых жизней" },
-  { value: "12", label: "лет работы" },
-  { value: "320+", label: "волонтёров" },
-  { value: "2400", label: "выездов" },
+  { value: "1 200+", label: "людей получили помощь" },
+  { value: "5", label: "лет работы" },
+  { value: "47", label: "волонтёров" },
+  { value: "312", label: "выездов по городу" },
 ];
 
 const HOW_TO_HELP = [
   {
     icon: "Heart",
     title: "Стать волонтёром",
-    desc: "Присоединитесь к нашей команде — заполните анкету, пройдите обучение и выезжайте на поиски вместе с нами.",
+    desc: "Присоединитесь к нам — заполните анкету и выходите с нами на раздачи еды, тёплой одежды и предметов первой необходимости.",
   },
   {
-    icon: "DollarSign",
-    title: "Поддержать финансово",
-    desc: "Ваше пожертвование помогает закупать оборудование, оплачивать топливо и обучение новых участников.",
+    icon: "HandCoins",
+    title: "Пожертвовать",
+    desc: "Даже небольшая сумма позволяет купить горячую еду, термобельё или медикаменты для человека, которому некуда идти.",
+  },
+  {
+    icon: "Shirt",
+    title: "Передать вещи",
+    desc: "Тёплая одежда, одеяла, обувь, средства гигиены — всё это принимаем в пунктах сбора по всей Кинешме.",
   },
   {
     icon: "Share2",
     title: "Рассказать друзьям",
-    desc: "Поделитесь нашими объявлениями о поиске — иногда одна репост меняет исход всей операции.",
-  },
-  {
-    icon: "Package",
-    title: "Передать снаряжение",
-    desc: "Фонарики, термосы, рации, аптечки — любое снаряжение для поисков будет кстати.",
+    desc: "Расскажите о нас — чем больше людей знает об отряде, тем больше помощи мы можем оказать тем, кто в ней нуждается.",
   },
 ];
 
 const STORIES = [
   {
-    name: "Дедушка Василий, 78 лет",
-    place: "Смоленская область",
-    text: "Вышел за грибами и потерялся в лесу. Наш отряд нашёл его через 14 часов — живым и здоровым. Семья плакала от радости.",
-    icon: "🌲",
-    color: "bg-green-50",
+    name: "Николай, 58 лет",
+    place: "г. Кинешма",
+    text: "Три зимы провёл на улице. Ребята из «Рук добра» не просто накормили — помогли восстановить документы и найти временное жильё.",
+    icon: "🏠",
+    color: "bg-orange-50",
   },
   {
-    name: "Маленькая Аня, 4 года",
-    place: "г. Калуга",
-    text: "Девочка ушла с детской площадки незамеченной. Благодаря быстрой реакции и слаженной работе 40 волонтёров нашли её за 3 часа.",
-    icon: "🌟",
+    name: "Татьяна, 43 года",
+    place: "г. Кинешма",
+    text: "Оказалась на улице после пожара. Волонтёры привезли одежду, еду, а потом помогли связаться с социальной службой.",
+    icon: "🔥",
     color: "bg-amber-50",
   },
   {
-    name: "Михаил, турист",
-    place: "Карелия",
-    text: "Сломал ногу на маршруте. Поисковый отряд добрался до него через горную реку и организовал эвакуацию вертолётом.",
-    icon: "⛰️",
-    color: "bg-blue-50",
+    name: "Александр, 65 лет",
+    place: "г. Кинешма",
+    text: "Пожилой мужчина без родственников. Каждую неделю ребята привозят ему еду и лекарства — он говорит, что это единственные люди, которые о нём помнят.",
+    icon: "💛",
+    color: "bg-yellow-50",
   },
 ];
 
 const VOLUNTEERS_LIST = [
-  { name: "Анна Соколова", role: "Командир отряда", years: "8 лет", icon: "👩‍💼" },
-  { name: "Дмитрий Орлов", role: "Кинолог", years: "5 лет", icon: "🐕" },
-  { name: "Мария Белова", role: "Медик отряда", years: "6 лет", icon: "👩‍⚕️" },
-  { name: "Алексей Крылов", role: "Картограф", years: "3 года", icon: "🗺️" },
-  { name: "Светлана Новак", role: "PR и коммуникации", years: "4 года", icon: "📢" },
-  { name: "Игорь Лесной", role: "Технический эксперт", years: "7 лет", icon: "🔧" },
+  { name: "Ольга Смирнова", role: "Руководитель отряда", years: "5 лет", icon: "👩‍💼" },
+  { name: "Андрей Захаров", role: "Координатор выездов", years: "4 года", icon: "🚗" },
+  { name: "Елена Фёдорова", role: "Медицинская помощь", years: "3 года", icon: "👩‍⚕️" },
+  { name: "Сергей Платонов", role: "Сбор вещей и продуктов", years: "5 лет", icon: "📦" },
+  { name: "Наталья Козлова", role: "Соцсети и реклама", years: "2 года", icon: "📱" },
+  { name: "Виктор Морозов", role: "Связь с соцслужбами", years: "4 года", icon: "🤝" },
 ];
 
 const BLOG_POSTS = [
   {
-    date: "28 марта 2026",
-    title: "Как правильно вести себя в лесу: памятка для родителей",
-    excerpt: "Каждое лето мы выезжаем на десятки поисков. Рассказываем, что нужно знать, чтобы не потеряться.",
-    tag: "Советы",
+    date: "1 апреля 2026",
+    title: "Весенняя раздача: 200 порций горячего супа за один вечер",
+    excerpt: "В начале апреля мы провели большой выезд на набережную. Рассказываем, как это было и чем вы можете помочь.",
+    tag: "Репортаж",
   },
   {
-    date: "14 марта 2026",
-    title: "Отчёт о зимнем сезоне: 23 успешных поиска",
-    excerpt: "Подводим итоги зимы — сложнейшего периода для поисковых операций. Все найдены живыми.",
+    date: "15 марта 2026",
+    title: "Как мы собрали 150 пакетов с вещами за неделю",
+    excerpt: "После одного поста в соцсетях жители Кинешмы откликнулись так, что не хватило машин для вывоза. Спасибо вам!",
+    tag: "Итоги",
+  },
+  {
+    date: "2 марта 2026",
+    title: "Зима позади: итоги самого трудного сезона",
+    excerpt: "Зима — самое опасное время для людей без крова. Рассказываем, сколько человек мы поддержали этой зимой.",
     tag: "Отчёт",
-  },
-  {
-    date: "2 февраля 2026",
-    title: "Новое оборудование — дроны с тепловизором",
-    excerpt: "Благодаря вашим пожертвованиям мы приобрели два профессиональных дрона для ночных поисков.",
-    tag: "Новости",
   },
 ];
 
@@ -103,7 +103,7 @@ function scrollTo(id: string) {
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: "", phone: "", email: "", city: "", motivation: "",
+    name: "", phone: "", email: "", motivation: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -124,9 +124,9 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <button
             onClick={() => scrollTo("hero")}
-            className="font-display text-2xl font-bold text-terracotta tracking-tight"
+            className="font-display text-xl md:text-2xl font-bold text-terracotta tracking-tight flex items-center gap-2"
           >
-            ❤️ Отряд
+            🤲 Руки добра
           </button>
 
           <div className="hidden md:flex items-center gap-6">
@@ -185,18 +185,18 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${HERO_IMAGE})` }}
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(80,30,15,0.72) 0%, rgba(20,10,5,0.45) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(70,25,10,0.78) 0%, rgba(15,8,3,0.40) 100%)" }} />
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto animate-fade-in">
           <div className="inline-block bg-white/15 backdrop-blur-sm text-white text-sm font-body font-medium px-4 py-1.5 rounded-full mb-6 border border-white/25">
-            Поисково-спасательный добровольческий отряд
+            Общественный отряд помощи бездомным · г. Кинешма
           </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-            Вместе мы<br />
-            <span style={{ color: "hsl(38,90%,72%)" }}>находим путь домой</span>
+            Руки добра —<br />
+            <span style={{ color: "hsl(38,90%,72%)" }}>тепло для каждого</span>
           </h1>
           <p className="font-body text-lg md:text-xl text-white/85 mb-10 max-w-xl mx-auto leading-relaxed">
-            Когда кто-то теряется — мы идём искать. Каждый день. В любую погоду. Потому что каждый человек важен.
+            Мы верим: каждый человек достоин заботы и уважения. Выходим на улицы Кинешмы, чтобы никто не остался один на один с бедой.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -206,10 +206,10 @@ const Index = () => {
               Стать волонтёром
             </button>
             <button
-              onClick={() => scrollTo("about")}
+              onClick={() => scrollTo("help")}
               className="bg-white/15 backdrop-blur-sm text-white font-body font-semibold text-lg px-8 py-4 rounded-xl border border-white/30 hover:bg-white/25 transition-all"
             >
-              Узнать о нас
+              Как помочь
             </button>
           </div>
         </div>
@@ -225,7 +225,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {STATS.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="font-display text-4xl md:text-5xl font-bold text-white mb-2">{s.value}</div>
+              <div className="font-display text-3xl md:text-5xl font-bold text-white mb-2">{s.value}</div>
               <div className="font-body text-sm text-white/75">{s.label}</div>
             </div>
           ))}
@@ -239,16 +239,16 @@ const Index = () => {
             <div>
               <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">О нас</div>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-                Мы — сердце<br />добровольческого<br />движения
+                Мы — соседи.<br />Мы — горожане.<br />Мы — рядом.
               </h2>
               <p className="font-body text-foreground/70 text-lg leading-relaxed mb-6">
-                Наш отряд основан в 2014 году. За это время мы провели тысячи поисковых операций и вернули сотни людей домой. Мы работаем бесплатно — только из любви к людям.
+                «Руки добра» — общественный волонтёрский отряд города Кинешмы Ивановской области. Мы основаны в 2021 году обычными жителями города, которые не могли пройти мимо.
               </p>
               <p className="font-body text-foreground/70 text-lg leading-relaxed mb-8">
-                В нашей команде — кинологи, медики, картографы, IT-специалисты и просто неравнодушные люди. Нас объединяет одно: вера в то, что каждая жизнь бесценна.
+                Каждую неделю мы выходим на улицы с горячей едой, тёплой одеждой и простым человеческим участием. Помогаем не только едой — помогаем восстановить документы, связаться с социальными службами, найти ночлег.
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Поиск людей", "Горный спасотряд", "Кинологи", "Ночные операции", "Дроны"].map((tag) => (
+                {["Горячее питание", "Одежда и обувь", "Медпомощь", "Документы", "Ночлег", "Психологическая поддержка"].map((tag) => (
                   <span key={tag} className="bg-terracotta-light text-terracotta font-body text-sm px-3 py-1.5 rounded-full">
                     {tag}
                   </span>
@@ -261,12 +261,13 @@ const Index = () => {
                 style={{ background: "linear-gradient(135deg, hsl(15,60%,88%) 0%, hsl(38,60%,88%) 100%)" }}
               >
                 <div className="text-center p-8">
-                  <div className="text-8xl mb-4">🤝</div>
-                  <p className="font-display text-2xl font-semibold text-terracotta">Вместе сильнее</p>
+                  <div className="text-8xl mb-4">🤲</div>
+                  <p className="font-display text-2xl font-semibold text-terracotta">Протянуть руку</p>
+                  <p className="font-body text-foreground/60 mt-2 text-sm">— это всегда правильно</p>
                 </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-gold text-white font-body font-semibold px-6 py-3 rounded-xl warm-shadow">
-                С 2014 года
+              <div className="absolute -bottom-4 -right-4 bg-gold text-white font-body font-semibold px-6 py-3 rounded-xl warm-shadow text-sm">
+                г. Кинешма с 2021 года
               </div>
             </div>
           </div>
@@ -281,10 +282,10 @@ const Index = () => {
           <div className="text-center mb-16">
             <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Как помочь</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Каждый вклад важен
+              Каждый вклад<br />меняет чью-то жизнь
             </h2>
             <p className="font-body text-foreground/60 text-lg mt-4 max-w-xl mx-auto">
-              Не нужно быть профессионалом — нужно просто хотеть помочь
+              Не нужно быть героем — нужно просто захотеть сделать добро
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -313,10 +314,13 @@ const Index = () => {
       <section id="stories" className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Истории успеха</div>
+            <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Истории</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Эти истории<br />изменили жизни
+              Настоящие люди.<br />Настоящие перемены.
             </h2>
+            <p className="font-body text-foreground/55 text-lg mt-4 max-w-lg mx-auto">
+              Имена изменены, но каждая история — правда
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {STORIES.map((s) => (
@@ -342,12 +346,12 @@ const Index = () => {
       <section id="volunteers" className="py-24 px-4 bg-warm-sand">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Команда</div>
+            <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Наша команда</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Люди, которые спасают
+              Обычные люди,<br />делающие необычное
             </h2>
             <p className="font-body text-foreground/60 text-lg mt-4">
-              Знакомьтесь с костяком нашего отряда
+              Среди нас — врачи, учителя, студенты и пенсионеры
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -364,12 +368,12 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-10">
-            <p className="font-body text-foreground/60 mb-4">И ещё 310+ замечательных людей</p>
+            <p className="font-body text-foreground/60 mb-4">И ещё десятки неравнодушных кинешемцев</p>
             <button
               onClick={() => scrollTo("join")}
               className="border-2 border-terracotta text-terracotta font-body font-semibold px-8 py-3 rounded-xl hover:bg-terracotta hover:text-white transition-all"
             >
-              Стать одним из них
+              Стать частью команды
             </button>
           </div>
         </div>
@@ -381,8 +385,9 @@ const Index = () => {
           <div className="text-center mb-16">
             <div className="text-terracotta font-body text-sm font-semibold uppercase tracking-widest mb-3">Блог</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Новости и советы
+              Новости и репортажи
             </h2>
+            <p className="font-body text-foreground/55 mt-4 text-lg">Следите за нашей работой</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {BLOG_POSTS.map((post) => (
@@ -418,16 +423,16 @@ const Index = () => {
               Вступить в отряд
             </h2>
             <p className="font-body text-white/80 text-lg">
-              Заполните анкету — мы свяжемся с вами в течение 2 рабочих дней
+              Заполните анкету — мы напишем вам в ближайшие дни и расскажем, как присоединиться
             </p>
           </div>
 
           {submitted ? (
             <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-12 text-center border border-white/25">
-              <div className="text-7xl mb-6">🎉</div>
+              <div className="text-7xl mb-6">🤲</div>
               <h3 className="font-display text-3xl font-bold text-white mb-4">Заявка принята!</h3>
               <p className="font-body text-white/80 text-lg">
-                Спасибо, {formData.name}! Мы свяжемся с вами по номеру {formData.phone} в ближайшие дни.
+                Спасибо, {formData.name}! Мы свяжемся с вами по номеру {formData.phone}. Добро пожаловать в «Руки добра»!
               </p>
             </div>
           ) : (
@@ -459,38 +464,25 @@ const Index = () => {
                   />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <label className="font-body text-sm text-white/80 mb-1.5 block">Email *</label>
-                  <input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleFormChange}
-                    required
-                    placeholder="ivan@mail.ru"
-                    className="w-full bg-white/90 text-foreground font-body rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-white/50 placeholder:text-foreground/40"
-                  />
-                </div>
-                <div>
-                  <label className="font-body text-sm text-white/80 mb-1.5 block">Город</label>
-                  <input
-                    name="city"
-                    value={formData.city}
-                    onChange={handleFormChange}
-                    placeholder="Москва"
-                    className="w-full bg-white/90 text-foreground font-body rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-white/50 placeholder:text-foreground/40"
-                  />
-                </div>
+              <div>
+                <label className="font-body text-sm text-white/80 mb-1.5 block">Email</label>
+                <input
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  placeholder="ivan@mail.ru"
+                  className="w-full bg-white/90 text-foreground font-body rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-white/50 placeholder:text-foreground/40"
+                />
               </div>
               <div>
-                <label className="font-body text-sm text-white/80 mb-1.5 block">Почему хотите вступить?</label>
+                <label className="font-body text-sm text-white/80 mb-1.5 block">Почему хотите помогать?</label>
                 <textarea
                   name="motivation"
                   value={formData.motivation}
                   onChange={handleFormChange}
                   rows={4}
-                  placeholder="Расскажите немного о себе и своей мотивации..."
+                  placeholder="Расскажите немного о себе — чем хотите помочь, сколько времени готовы уделять..."
                   className="w-full bg-white/90 text-foreground font-body rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-white/50 placeholder:text-foreground/40 resize-none"
                 />
               </div>
@@ -516,12 +508,13 @@ const Index = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
               Свяжитесь с нами
             </h2>
+            <p className="font-body text-foreground/55 text-lg mt-4">Мы в Кинешме — всегда на связи</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: "Phone", title: "Телефон", value: "+7 (800) 123-45-67", sub: "Круглосуточно" },
-              { icon: "Mail", title: "Email", value: "help@otryad.ru", sub: "Ответим за 24 часа" },
-              { icon: "MapPin", title: "Адрес", value: "ул. Добровольческая, 12", sub: "г. Москва" },
+              { icon: "Phone", title: "Телефон", value: "+7 (xxx) xxx-xx-xx", sub: "Ежедневно с 9:00 до 21:00" },
+              { icon: "Mail", title: "Email", value: "rukidobra@mail.ru", sub: "Ответим в течение суток" },
+              { icon: "MapPin", title: "Город", value: "г. Кинешма", sub: "Ивановская область" },
             ].map((c) => (
               <div key={c.title} className="bg-white rounded-2xl p-8 text-center card-hover warm-shadow border border-border">
                 <div className="w-14 h-14 bg-terracotta-light rounded-xl flex items-center justify-center mx-auto mb-5">
@@ -533,6 +526,26 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          {/* Extra CTA */}
+          <div
+            className="mt-12 rounded-2xl p-8 md:p-12 text-center"
+            style={{ background: "linear-gradient(135deg, hsl(15,60%,88%) 0%, hsl(38,60%,88%) 100%)" }}
+          >
+            <div className="text-5xl mb-4">💛</div>
+            <h3 className="font-display text-3xl font-bold text-foreground mb-3">
+              Есть вещи или продукты для передачи?
+            </h3>
+            <p className="font-body text-foreground/70 text-lg mb-6 max-w-md mx-auto">
+              Напишите нам — мы организуем самовывоз или подскажем ближайший пункт сбора в вашем районе Кинешмы.
+            </p>
+            <button
+              onClick={() => scrollTo("join")}
+              className="bg-terracotta text-white font-body font-semibold px-8 py-3 rounded-xl hover:opacity-90 transition-all warm-shadow"
+            >
+              Написать нам
+            </button>
+          </div>
         </div>
       </section>
 
@@ -541,9 +554,9 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
             <div>
-              <div className="font-display text-2xl font-bold mb-2">❤️ Отряд</div>
+              <div className="font-display text-2xl font-bold mb-2">🤲 Руки добра</div>
               <div className="font-body text-white/55 text-sm max-w-xs">
-                Поисково-спасательный добровольческий отряд. Работаем с 2014 года.
+                Общественный отряд помощи бездомным. г. Кинешма, Ивановская область. С 2021 года.
               </div>
             </div>
             <div className="flex flex-wrap gap-5 justify-center">
@@ -559,8 +572,8 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-            <div className="font-body text-white/40 text-sm">© 2026 Волонтёрский отряд. Все права защищены.</div>
-            <div className="font-body text-white/40 text-sm">Некоммерческая организация</div>
+            <div className="font-body text-white/40 text-sm">© 2026 Отряд «Руки добра». Все права защищены.</div>
+            <div className="font-body text-white/40 text-sm">Некоммерческая общественная организация</div>
           </div>
         </div>
       </footer>
