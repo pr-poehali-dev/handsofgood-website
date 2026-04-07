@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
+
+const API = "https://functions.poehali.dev/9854621a-b99f-401b-9a90-435de6504277";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/84b70900-4a28-4564-af81-e069d7135e03/files/518fa3de-46e8-4e17-a935-57e087fd8c8b.jpg";
 
@@ -42,30 +44,6 @@ const HOW_TO_HELP = [
   },
 ];
 
-const STORIES = [
-  {
-    name: "Шарик",
-    place: "г. Кинешма, ул. Советская",
-    text: "Пёс три года жил у мусорных баков. Волонтёры отряда поймали его, вылечили сломанную лапу и нашли любящую семью. Теперь он живёт на диване.",
-    icon: "🐕",
-    color: "bg-orange-50",
-  },
-  {
-    name: "Мурка и котята",
-    place: "г. Кинешма, рынок",
-    text: "Кошка с пятью котятами жила под рыночными лотками. Всех забрали, вакцинировали, стерилизовали маму и пристроили всех котят в добрые руки.",
-    icon: "🐱",
-    color: "bg-amber-50",
-  },
-  {
-    name: "Рекс",
-    place: "г. Кинешма, заброшенный завод",
-    text: "Охранная собака, которую бросили хозяева при закрытии завода. Жил там год. Сейчас Рекс — ласковый домашний пёс в семье из Кинешмы.",
-    icon: "🦮",
-    color: "bg-yellow-50",
-  },
-];
-
 const VOLUNTEERS_LIST = [
   { name: "Марина Власова", role: "Руководитель отряда", years: "4 года", icon: "👩‍💼" },
   { name: "Алексей Громов", role: "Отлов и транспорт", years: "3 года", icon: "🚐" },
@@ -75,44 +53,36 @@ const VOLUNTEERS_LIST = [
   { name: "Дмитрий Сёмин", role: "Сбор корма и вещей", years: "2 года", icon: "📦" },
 ];
 
-const BLOG_POSTS = [
-  {
-    date: "3 апреля 2026",
-    title: "Апрельский рейд: накормили 47 животных за один вечер",
-    excerpt: "Вышли большой командой — объехали все известные точки скопления бездомных животных в Кинешме. Рассказываем, как прошло.",
-    tag: "Репортаж",
-  },
-  {
-    date: "20 марта 2026",
-    title: "За месяц пристроили 12 кошек и 5 собак — рекорд отряда!",
-    excerpt: "Март стал самым успешным месяцем для пристройства. Делимся, что сработало и как вы можете помочь.",
-    tag: "Итоги",
-  },
-  {
-    date: "5 марта 2026",
-    title: "Зима позади: как животные пережили холода",
-    excerpt: "Зима — самое опасное время для бездомных животных. Рассказываем, сколько питомцев мы поддержали и спасли этой зимой.",
-    tag: "Отчёт",
-  },
-];
-
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
+interface BlogPost { id: number; title: string; excerpt: string; tag: string; published_at: string; }
+interface Story { id: number; name: string; place: string; story: string; icon: string; color: string; }
+
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "", phone: "", email: "", motivation: "",
-  });
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", motivation: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [stories, setStories] = useState<Story[]>([]);
+
+  useEffect(() => {
+    fetch(`${API}?resource=blog`).then(r => r.json()).then(setPosts).catch(() => {});
+    fetch(`${API}?resource=stories`).then(r => r.json()).then(setStories).catch(() => {});
+  }, []);
 
   function handleFormChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleFormSubmit(e: React.FormEvent) {
+  async function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
+    await fetch(`${API}?resource=applications`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).catch(() => {});
     setSubmitted(true);
   }
 
@@ -323,10 +293,10 @@ const Index = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {STORIES.map((s) => (
-              <div key={s.name} className={`${s.color} rounded-2xl p-8 card-hover border border-border`}>
+            {stories.map((s) => (
+              <div key={s.id} className={`${s.color} rounded-2xl p-8 card-hover border border-border`}>
                 <div className="text-5xl mb-5">{s.icon}</div>
-                <p className="font-body text-foreground/75 leading-relaxed mb-6 italic">"{s.text}"</p>
+                <p className="font-body text-foreground/75 leading-relaxed mb-6 italic">"{s.story}"</p>
                 <div className="border-t border-border/50 pt-4">
                   <div className="font-body font-semibold text-foreground">{s.name}</div>
                   <div className="font-body text-sm text-foreground/50 flex items-center gap-1 mt-1">
@@ -334,6 +304,13 @@ const Index = () => {
                     {s.place}
                   </div>
                 </div>
+              </div>
+            ))}
+            {stories.length === 0 && [1,2,3].map(i => (
+              <div key={i} className="bg-orange-50 rounded-2xl p-8 border border-border animate-pulse">
+                <div className="h-12 w-12 bg-orange-100 rounded-lg mb-5" />
+                <div className="h-4 bg-orange-100 rounded mb-2" />
+                <div className="h-4 bg-orange-100 rounded w-3/4" />
               </div>
             ))}
           </div>
@@ -390,8 +367,8 @@ const Index = () => {
             <p className="font-body text-foreground/55 mt-4 text-lg">Следите за жизнью отряда</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {BLOG_POSTS.map((post) => (
-              <div key={post.title} className="bg-white rounded-2xl overflow-hidden card-hover warm-shadow border border-border">
+            {posts.map((post) => (
+              <div key={post.id} className="bg-white rounded-2xl overflow-hidden card-hover warm-shadow border border-border">
                 <div
                   className="h-40 flex items-center justify-center"
                   style={{ background: "linear-gradient(135deg, hsl(15,60%,88%) 0%, hsl(38,60%,88%) 100%)" }}
@@ -401,13 +378,23 @@ const Index = () => {
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="bg-terracotta-light text-terracotta font-body text-xs px-2.5 py-1 rounded-full font-medium">{post.tag}</span>
-                    <span className="font-body text-xs text-foreground/40">{post.date}</span>
+                    <span className="font-body text-xs text-foreground/40">{new Date(post.published_at).toLocaleDateString("ru-RU")}</span>
                   </div>
                   <h3 className="font-display text-xl font-bold text-foreground mb-3 leading-snug">{post.title}</h3>
                   <p className="font-body text-sm text-foreground/60 leading-relaxed">{post.excerpt}</p>
                   <button className="mt-4 font-body text-sm text-terracotta font-semibold hover:underline flex items-center gap-1">
                     Читать далее <Icon name="ArrowRight" size={14} />
                   </button>
+                </div>
+              </div>
+            ))}
+            {posts.length === 0 && [1,2,3].map(i => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden border border-border animate-pulse">
+                <div className="h-40 bg-orange-50" />
+                <div className="p-6 space-y-3">
+                  <div className="h-3 bg-muted rounded w-1/3" />
+                  <div className="h-5 bg-muted rounded" />
+                  <div className="h-4 bg-muted rounded w-4/5" />
                 </div>
               </div>
             ))}

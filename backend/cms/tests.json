@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "GET blog posts",
+      "method": "GET",
+      "path": "/?resource=blog",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "GET animal stories",
+      "method": "GET",
+      "path": "/?resource=stories",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "GET volunteer applications",
+      "method": "GET",
+      "path": "/?resource=applications",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    }
+  ]
+}
